@@ -147,12 +147,13 @@ footer { text-align: center; padding: 30px; opacity: 0.7; color: #bbb; }
 </audio>
 
 <script>
+// --- ONGLET ---
 function openTab(tabname) {
     document.querySelectorAll("section").forEach(s => s.style.display = "none");
     document.getElementById(tabname).style.display = "block";
 }
 
-// PARTICULES
+// --- PARTICULES ---
 const canvas = document.getElementById("particles");
 const ctx = canvas.getContext("2d");
 canvas.width = window.innerWidth;
@@ -177,7 +178,7 @@ function animateParticles() {
 }
 animateParticles();
 
-// AUDIO
+// --- AUDIO ---
 window.addEventListener('load', () => {
     const sound = document.getElementById('welcomeSound');
     const music = document.getElementById('bgMusic');
