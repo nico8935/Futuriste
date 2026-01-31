@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Maintenance Informatique Futuriste</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* 🌐 MENU À ONGLET FUTURISTE */
+.nav-tabs { position: fixed; top: 15px; width: 100%; text-align: center; z-index: 9999; }
+.nav-tabs button {
+    font-family: 'Orbitron', sans-serif; font-size: 1.1rem; margin: 0 10px; padding: 10px 20px;
+    color: #e4d7ff; background: rgba(50,0,90,0.6); border: 1px solid #a855ff;
+    border-radius: 8px; cursor: pointer; text-shadow: 0 0 10px #b36bff;
+    box-shadow: 0 0 10px #b36bff77; backdrop-filter: blur(4px); transition: 0.3s;
+}
+.nav-tabs button:hover {
+    background: rgba(150,0,255,0.8); box-shadow: 0 0 25px #d889ff; transform: scale(1.1);
+}
+
+body {
+    margin: 0; font-family: 'Orbitron', sans-serif; color: #d7d7ff; overflow-x: hidden; background: #000;
+}
+
+/* 🌌 ARRIÈRE-PLAN ANIMÉ */
+.space-bg {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -3;
+    background: url('https://raw.githubusercontent.com/nico8935/Futuriste/refs/heads/main/ChatGPT%20Image%2031%20janv.%202026%2C%2010_57_26.png') no-repeat center center / cover;
+    animation: pulseVideo 12s ease-in-out infinite alternate;
+}
+@keyframes pulseVideo {
+    0% { filter: brightness(0.7) saturate(1.1) blur(0px); transform: scale(1); }
+    100% { filter: brightness(1.1) saturate(1.4) blur(2px); transform: scale(1.04); }
+}
+
+/* PARTICULES */
+#particles { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: -2; }
+
+/* HEADER */
+header { text-align: center; padding: 60px 20px; }
+h1 { font-size: 3rem; text-shadow: 0 0 20px #cc66ff, 0 0 35px #00ffee; animation: glowPulse 3s infinite alternate; }
+@keyframes glowPulse { from { opacity: 0.7; } to { opacity: 1; } }
+
+/* BLOCS */
+section { max-width: 1100px; margin: auto; padding: 40px 20px; }
+.box {
+    background: rgba(10, 0, 25, 0.7); border: 1px solid #bb77ff99; padding: 25px;
+    margin-bottom: 40px; border-radius: 10px; box-shadow: 0 0 25px #9d4dffa0;
+    backdrop-filter: blur(4px); transition: 0.3s;
+}
+.box:hover { transform: scale(1.02); box-shadow: 0 0 45px #d17fffdd; }
+h2 { color: #f5e8ff; text-shadow: 0 0 15px #bb77ff; border-left: 4px solid #d17fff; padding-left: 10px; }
+
+table { width: 100%; border-collapse: collapse; color: #dcdcff; }
+td { border-bottom: 1px solid #9d4dff55; padding: 10px; }
+
+/* SCANLINES */
+.scanlines {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none;
+    background: repeating-linear-gradient(to bottom, rgba(255,255,255,0.03) 0, rgba(255,255,255,0.03) 1px, transparent 3px);
+    animation: scan 4s linear infinite;
+}
+@keyframes scan { from { transform: translateY(-100%); } to { transform: translateY(100%); } }
+
+footer { text-align: center; padding: 30px; opacity: 0.7; color: #bbb; }
+</style>
+</head>
+<body>
+
+<nav class="nav-tabs">
+    <button onclick="openTab('tarifs-horaires')">Tarifs horaires</button>
+    <button onclick="openTab('forfait-depannage')">Dépannage & Optimisation</button>
+    <button onclick="openTab('forfait-systeme')">Système & Logiciels</button>
+    <button onclick="openTab('forfait-internet')">Internet / Wi-Fi / TV</button>
+    <button onclick="openTab('assistance')">Assistance utilisateurs</button>
+    <button onclick="openTab('contact')">Contact</button>
+</nav>
+
+<canvas id="particles"></canvas>
+<div class="space-bg"></div>
+<div class="scanlines"></div>
+
+<header><h1>Maintenance Informatique Futuriste</h1></header>
+
+<!-- ONGLET TARIFS -->
+<section id="tarifs-horaires" style="display:block;">
+<div class="box"><h2>Tarifs horaires</h2>
+<table>
+<tr><td>Dépannage informatique — 1ère heure</td><td>50 €</td></tr>
+<tr><td>Heure supplémentaire</td><td>40 €</td></tr>
+<tr><td>Déplacement (Grasse centre)</td><td>Gratuit</td></tr>
+<tr><td>Déplacement hors Grasse (5 à 10 km)</td><td>5 à 10 €</td></tr>
+</table></div></section>
+
+<!-- ONGLET DÉPANNAGE -->
+<section id="forfait-depannage" style="display:none;">
+<div class="box"><h2>Forfaits – Dépannage & Optimisation</h2>
+<table>
+<tr><td>Ordinateur lent (optimisation complète)</td><td>60 €</td></tr>
+<tr><td>Suppression virus / malware</td><td>60 €</td></tr>
+<tr><td>Nettoyage complet</td><td>60 €</td></tr>
+<tr><td>Installation antivirus</td><td>30 €</td></tr>
+</table></div></section>
+
+<!-- ONGLET SYSTÈME -->
+<section id="forfait-systeme" style="display:none;">
+<div class="box"><h2>Forfaits – Système & Logiciels</h2>
+<table>
+<tr><td>Réinstallation Windows + pilotes</td><td>80 €</td></tr>
+<tr><td>Réinstallation Windows + sauvegarde + restauration</td><td>100 €</td></tr>
+<tr><td>Installation logiciels / suite bureautique</td><td>30 à 40 €</td></tr>
+<tr><td>Récupération de données simple</td><td>40 €</td></tr>
+</table></div></section>
+
+<!-- ONGLET INTERNET -->
+<section id="forfait-internet" style="display:none;">
+<div class="box"><h2>Forfaits – Internet / Wi-Fi / TV / Multimédia</h2>
+<table>
+<tr><td>Installation TV, box, décodeur, câbles</td><td>50 €</td></tr>
+<tr><td>Installation et configuration Wi-Fi</td><td>50 €</td></tr>
+<tr><td>Optimisation réseau</td><td>50 à 70 €</td></tr>
+<tr><td>Installation imprimante</td><td>40 €</td></tr>
+</table></div></section>
+
+<!-- ONGLET ASSISTANCE -->
+<section id="assistance" style="display:none;">
+<div class="box"><h2>Assistance utilisateurs</h2>
+<table>
+<tr><td>Initiation informatique —
+
+<!-- ONGLET CONTACT -->
+<section id="contact" style="display:none;">
+<div class="box"><h2>Contact</h2>
+<p><strong>Email :</strong> nicolasepeirier@gmail.com</p>
+<p><strong>Téléphone :</strong> 07 62 90 35 01</p>
+<p><strong>Adresse :</strong> 133 Avenue Auguste Renoir</p>
+</div></section>
+
+<!-- MUSIQUE DE FOND -->
+<audio id="bgMusic" loop>
+    <source src="https://raw.githubusercontent.com/nico8935/Futuriste/refs/heads/main/lofi-girl-chill-lofi-beats-lofi-ambient-461871.mp3" type="audio/mpeg">
+</audio>
+
+<!-- VOIX DE BIENVENUE -->
+<audio id="welcomeSound">
+    <source src="https://cdn.pixabay.com/audio/2022/03/15/audio_3f6b4e1c32.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+function openTab(tabname) {
+    document.querySelectorAll("section").forEach(s => s.style.display = "none");
+    document.getElementById(tabname).style.display = "block";
+}
+
+// PARTICULES
+const canvas = document.getElementById("particles");
+const ctx = canvas.getContext("2d");
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+let particles = [];
+for (let i = 0; i < 150; i++) {
+    particles.push({ x: Math.random()*canvas.width, y: Math.random()*canvas.height, size: Math.random()*2+1, speedX:(Math.random()-0.5)*0.4, speedY:(Math.random()-0.5)*0.4 });
+}
+function animateParticles() {
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    particles.forEach(p => {
+        p.x += p.speedX;
+        p.y += p.speedY;
+        if (p.x < 0 || p.x > canvas.width) p.speedX *= -1;
+        if (p.y < 0 || p.y > canvas.height) p.speedY *= -1;
+        ctx.fillStyle = "#c28aff";
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI*2);
+        ctx.fill();
+    });
+    requestAnimationFrame(animateParticles);
+}
+animateParticles();
+
+// AUDIO
+window.addEventListener('load', () => {
+    const sound = document.getElementById('welcomeSound');
+    const music = document.getElementById('bgMusic');
+
+    sound.play().catch(() => {
+        document.body.addEventListener('click', () => sound.play(), { once: true });
+    });
+
+    music.volume = 0.4;
+    music.play().catch(() => {
+        document.body.addEventListener('click', () => music.play(), { once: true });
+    });
+});
+</script>
+
+<footer>© 2025 — Maintenance Informatique Futuriste</footer>
+</body>
+</html>
