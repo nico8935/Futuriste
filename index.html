@@ -18,7 +18,9 @@
     background: rgba(150,0,255,0.8); box-shadow: 0 0 25px #d889ff; transform: scale(1.1);
 }
 
-body { margin: 0; font-family: 'Orbitron', sans-serif; color: #d7d7ff; overflow-x: hidden; background: #000; }
+body {
+    margin: 0; font-family: 'Orbitron', sans-serif; color: #d7d7ff; overflow-x: hidden; background: #000;
+}
 
 /* 🌌 ARRIÈRE-PLAN ANIMÉ */
 .space-bg {
@@ -71,6 +73,7 @@ footer { text-align: center; padding: 30px; opacity: 0.7; color: #bbb; }
     <button onclick="openTab('forfait-systeme')">Système & Logiciels</button>
     <button onclick="openTab('forfait-internet')">Internet / Wi-Fi / TV</button>
     <button onclick="openTab('assistance')">Assistance utilisateurs</button>
+    <button onclick="openTab('contact')">Contact</button>
 </nav>
 
 <canvas id="particles"></canvas>
@@ -79,7 +82,7 @@ footer { text-align: center; padding: 30px; opacity: 0.7; color: #bbb; }
 
 <header><h1>Maintenance Informatique Futuriste</h1></header>
 
-<!-- ONGLET 1 -->
+<!-- ONGLET TARIFS -->
 <section id="tarifs-horaires" style="display:block;">
 <div class="box"><h2>Tarifs horaires</h2>
 <table>
@@ -89,7 +92,7 @@ footer { text-align: center; padding: 30px; opacity: 0.7; color: #bbb; }
 <tr><td>Déplacement hors Grasse (5 à 10 km)</td><td>5 à 10 €</td></tr>
 </table></div></section>
 
-<!-- ONGLET 2 -->
+<!-- ONGLET DÉPANNAGE -->
 <section id="forfait-depannage" style="display:none;">
 <div class="box"><h2>Forfaits – Dépannage & Optimisation</h2>
 <table>
@@ -99,7 +102,7 @@ footer { text-align: center; padding: 30px; opacity: 0.7; color: #bbb; }
 <tr><td>Installation antivirus</td><td>30 €</td></tr>
 </table></div></section>
 
-<!-- ONGLET 3 -->
+<!-- ONGLET SYSTÈME -->
 <section id="forfait-systeme" style="display:none;">
 <div class="box"><h2>Forfaits – Système & Logiciels</h2>
 <table>
@@ -109,7 +112,7 @@ footer { text-align: center; padding: 30px; opacity: 0.7; color: #bbb; }
 <tr><td>Récupération de données simple</td><td>40 €</td></tr>
 </table></div></section>
 
-<!-- ONGLET 4 -->
+<!-- ONGLET INTERNET -->
 <section id="forfait-internet" style="display:none;">
 <div class="box"><h2>Forfaits – Internet / Wi-Fi / TV / Multimédia</h2>
 <table>
@@ -119,7 +122,7 @@ footer { text-align: center; padding: 30px; opacity: 0.7; color: #bbb; }
 <tr><td>Installation imprimante</td><td>40 €</td></tr>
 </table></div></section>
 
-<!-- ONGLET 5 -->
+<!-- ONGLET ASSISTANCE -->
 <section id="assistance" style="display:none;">
 <div class="box"><h2>Assistance utilisateurs</h2>
 <table>
@@ -128,14 +131,19 @@ footer { text-align: center; padding: 30px; opacity: 0.7; color: #bbb; }
 <tr><td>Sécurisation appareil + conseils</td><td>40 €</td></tr>
 </table></div></section>
 
-<!-- VOIX -->
-<audio id="welcomeSound"><source src="https://cdn.pixabay.com/audio/2022/03/15/audio_3f6b4e1c32.mp3" type="audio/mpeg"></audio>
-<footer>© 2025 — Maintenance Informatique Futuriste</footer>
+<!-- ONGLET CONTACT -->
+<section id="contact" style="display:none;">
+<div class="box"><h2>Contact</h2>
+<p><strong>Email :</strong> nicolasepeirier@gmail.com</p>
+<p><strong>Téléphone :</strong> 07 62 90 35 01</p>
+<p><strong>Adresse :</strong> 133 Avenue Auguste Renoir</p>
+</div></section>
 
-<script>
-function openTab(tabname) {
-    document.querySelectorAll("section").forEach(s => s.style.display="none");
-    document.getElementById(tabname).style.display = "block";
-}
+<!-- MUSIQUE
+<!--  -->
+<audio id="bgMusic" loop>
+    <source src="music.mp3" type="audio/mpeg">
+</audio>
 
-const canvas = document.getElementById("particles"), ctx = canvas.getContext("
+<audio id="welcomeSound">
+    <source src="https://cdn.pixabay.com/audio/2022/03/15/audio_3f6b4e1c32.mp3" type="audio>>
