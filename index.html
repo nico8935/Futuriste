@@ -5,58 +5,84 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<title>Maintenance Informatique Futuriste – Version Ultra</title>
+<title>Maintenance Informatique Cyberpunk</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
 
 <style>
 
 /* ------------------------------
-   RESET + BASE
+   BASE
 -------------------------------- */
 body {
     margin: 0;
     font-family: 'Orbitron', sans-serif;
-    background: #000;
+    background: #020007;
     color: #e9d9ff;
     overflow-x: hidden;
-    animation: fadeIn 1s ease-in-out;
+    animation: fadeIntro 1.2s ease-in-out;
 }
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+@keyframes fadeIntro {
+    from { opacity: 0; transform: scale(1.05); }
+    to { opacity: 1; transform: scale(1); }
 }
 
 /* ------------------------------
-   BACKGROUND ANIMÉ + PULSATION
+   SCANLINES + GLITCH
+-------------------------------- */
+.scanlines {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background: repeating-linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.03) 0px,
+        rgba(255, 255, 255, 0.03) 2px,
+        transparent 4px
+    );
+    z-index: 10000;
+    opacity: .4;
+    animation: scanMove 6s linear infinite;
+}
+@keyframes scanMove {
+    from { transform: translateY(-100%); }
+    to { transform: translateY(100%); }
+}
+
+/* ------------------------------
+   FOND ANIMÉ CYBERPUNK
 -------------------------------- */
 .space-bg {
     position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
+    inset: 0;
     z-index: -5;
-    background: url('https://raw.githubusercontent.com/nico8935/Futuriste/refs/heads/main/ChatGPT%20Image%2031%20janv.%202026%2C%2010_57_26.png') center/cover no-repeat;
-    filter: brightness(0.9);
-    animation: bgPulse 12s ease-in-out infinite alternate;
+    background: url('https://raw.githubusercontent.com/nico8935/Futuriste/refs/heads/main/ChatGPT%20Image%2031%20janv.%202026%2C%2010_57_26.png')
+    center/cover no-repeat;
+    animation: bgPulse 8s infinite alternate ease-in-out,
+               bgMove 40s infinite linear;
+    filter: saturate(1.3) brightness(0.9);
 }
 @keyframes bgPulse {
-    from { transform: scale(1); filter: brightness(0.7) saturate(1.1); }
-    to { transform: scale(1.05); filter: brightness(1.2) saturate(1.4); }
+    from { transform: scale(1); filter: brightness(0.8) saturate(1.2); }
+    to { transform: scale(1.15); filter: brightness(1.25) saturate(1.7); }
+}
+@keyframes bgMove {
+    from { background-position: center center; }
+    to { background-position: 70% 40%; }
 }
 
 /* ------------------------------
-   PARTICULES
+   PARTICULES CYBERPUNK
 -------------------------------- */
 #particles {
     position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    pointer-events: none;
+    inset: 0;
     z-index: -3;
+    pointer-events:none;
 }
 
 /* ------------------------------
-   MENU DÉROULANT FUTURISTE
+   MENU NÉON CYBERPUNK
 -------------------------------- */
 nav {
     position: fixed;
@@ -73,108 +99,101 @@ nav {
 }
 
 .dropdown button {
-    background: rgba(120, 0, 200, 0.55);
-    border: 1px solid #cb66ff;
+    background: rgba(180,0,255,0.4);
+    border: 1px solid #ff44ff;
     padding: 12px 22px;
-    color: #f8eaff;
     border-radius: 10px;
     cursor: pointer;
-    transition: .25s;
-    box-shadow: 0 0 18px #b566ffa8;
-    text-shadow: 0 0 10px #d88fff;
+    color: #ffe8ff;
+    transition: .2s;
+    box-shadow: 0 0 15px #ff44ff99;
+    text-shadow: 0 0 10px #ff55ff;
 }
-
 .dropdown button:hover {
-    background: rgba(160, 0, 255, 0.75);
-    transform: scale(1.12);
-    box-shadow: 0 0 25px #dd99ffaa;
+    background: rgba(255,0,255,0.8);
+    box-shadow: 0 0 30px #ff00ffdd;
+    transform: scale(1.18);
 }
 
 .dropdown-content {
-    display: none;
     position: absolute;
-    top: 55px;
-    left: 0;
-    background: rgba(30,0,50,0.85);
-    border: 1px solid #bb66ff;
-    border-radius: 12px;
+    display: none;
     min-width: 230px;
-    padding: 10px;
-    box-shadow: 0 0 18px #a466ff88;
-    backdrop-filter: blur(6px);
+    top: 55px;
+    background: rgba(25,0,40,0.9);
+    backdrop-filter: blur(7px);
+    border-radius: 12px;
+    border: 1px solid #cc33ff;
+    box-shadow: 0 0 22px #cc33ff88;
     animation: fadeIn .3s ease-out;
 }
-
 .dropdown:hover .dropdown-content {
     display: block;
 }
 
 .dropdown-content p {
+    padding: 10px;
     margin: 0;
-    padding: 8px 10px;
-    border-bottom: 1px solid #8844cc66;
     cursor: pointer;
-    transition: .25s;
+    border-bottom: 1px solid #aa22dd66;
+    transition: .2s;
 }
-
 .dropdown-content p:hover {
-    background: rgba(150,0,255,0.3);
-    padding-left: 15px;
-    transform: scale(1.03);
+    background: rgba(255,0,255,0.3);
+    padding-left: 18px;
 }
 
 /* ------------------------------
-   TITRE PRINCIPAL
+   TITRE CYBERPUNK
 -------------------------------- */
 h1 {
+    margin-top: 170px;
     text-align: center;
-    margin-top: 150px;
-    font-size: 3.5rem;
-    text-shadow: 0 0 25px #c66aff, 0 0 35px #00e0ff;
-    animation: glowPulse 3s infinite alternate;
+    font-size: 3.8rem;
+    text-shadow: 0 0 40px #ff00ff, 0 0 60px #00e6ff;
+    animation: glitch 2s infinite;
 }
-@keyframes glowPulse {
-    from { opacity: 0.75; }
-    to { opacity: 1; }
+@keyframes glitch {
+    0%, 100% { transform: translate(0,0); }
+    20% { transform: translate(-3px,2px); }
+    40% { transform: translate(3px,-2px); }
+    60% { transform: translate(-2px,3px); }
+    80% { transform: translate(2px,-3px); }
 }
 
 /* ------------------------------
-   SECTIONS + TRANSITIONS
+   SECTIONS ANIMATION + STYLE
 -------------------------------- */
 section {
     max-width: 1100px;
-    margin: 30px auto;
+    margin: 40px auto;
     padding: 35px;
-    background: rgba(20,0,40,0.6);
+    background: rgba(25,0,50,0.7);
     border-radius: 15px;
-    box-shadow: 0 0 25px #a966ffaa;
     display: none;
     opacity: 0;
-    transition: opacity .6s ease-in-out;
-    backdrop-filter: blur(6px);
+    transition: opacity .5s ease-in-out, transform .4s;
+    box-shadow: 0 0 30px #ff00ff55;
+    backdrop-filter: blur(7px);
 }
 
 section.active {
     display: block;
     opacity: 1;
+    transform: translateY(0);
 }
 
 h2 {
-    border-left: 4px solid #d266ff;
+    border-left: 4px solid #ff00ff;
     padding-left: 12px;
     margin-bottom: 20px;
-    text-shadow: 0 0 12px #e188ff;
 }
 
-table {
-    width: 100%; 
-    border-collapse: collapse;
-}
-
+table { width: 100%; border-collapse: collapse; }
 td {
     padding: 12px;
-    border-bottom: 1px solid #9955dd55;
-    font-size: 1.05rem;
+    border-bottom: 1px solid #ff00ff55;
+    font-size: 1.1rem;
 }
 
 /* ------------------------------
@@ -184,65 +203,28 @@ footer {
     text-align: center;
     padding: 40px;
     opacity: 0.8;
-    margin-top: 80px;
 }
 
 </style>
 </head>
 <body>
 
-<!-- FOND ANIMÉ -->
 <div class="space-bg"></div>
+<div class="scanlines"></div>
 <canvas id="particles"></canvas>
 
-<!-- MENU ULTRA MODERNE -->
+<!-- MENU -->
 <nav>
-
-    <div class="dropdown">
-        <button>Tarifs</button>
-        <div class="dropdown-content">
-            <p onclick="openTab('tarifs')">Tarifs horaires</p>
-        </div>
-    </div>
-
-    <div class="dropdown">
-        <button>Dépannage</button>
-        <div class="dropdown-content">
-            <p onclick="openTab('depannage')">Dépannage & Optimisation</p>
-        </div>
-    </div>
-
-    <div class="dropdown">
-        <button>Système</button>
-        <div class="dropdown-content">
-            <p onclick="openTab('systeme')">Système & logiciels</p>
-        </div>
-    </div>
-
-    <div class="dropdown">
-        <button>Internet</button>
-        <div class="dropdown-content">
-            <p onclick="openTab('internet')">TV – Wi-Fi – Réseau</p>
-        </div>
-    </div>
-
-    <div class="dropdown">
-        <button>Assistance</button>
-        <div class="dropdown-content">
-            <p onclick="openTab('assistance')">Assistance aux utilisateurs</p>
-        </div>
-    </div>
-
-    <div class="dropdown">
-        <button>Contact</button>
-        <div class="dropdown-content">
-            <p onclick="openTab('contact')">Me contacter</p>
-        </div>
-    </div>
-
+    <div class="dropdown"><button>Tarifs</button><div class="dropdown-content"><p onclick="openTab('tarifs')">Tarifs horaires</p></div></div>
+    <div class="dropdown"><button>Dépannage</button><div class="dropdown-content"><p onclick="openTab('depannage')">Dépannage & optimisation</p></div></div>
+    <div class="dropdown"><button>Système</button><div class="dropdown-content"><p onclick="openTab('systeme')">Système & logiciels</p></div></div>
+    <div class="dropdown"><button>Internet</button><div class="dropdown-content"><p onclick="openTab('internet')">Internet / TV / Wi-Fi</p></div></div>
+    <div class="dropdown"><button>Assistance</button><div class="dropdown-content"><p onclick="openTab('assistance')">Assistance utilisateurs</p></div></div>
+    <div class="dropdown"><button>Contact</button><div class="dropdown-content"><p onclick="openTab('contact')">Me contacter</p></div></div>
 </nav>
 
-<h1>Maintenance Informatique Futuriste</h1>
+<!-- TITRE -->
+<h1>Maintenance Informatique Cyberpunk</h1>
 
 <!-- SECTIONS -->
 
@@ -259,8 +241,8 @@ footer {
 <section id="depannage">
 <h2>Dépannage & Optimisation</h2>
 <table>
-<tr><td>Ordinateur lent (optimisation complète)</td><td>60 €</td></tr>
-<tr><td>Suppression virus / malware</td><td>60 €</td></tr>
+<tr><td>Ordinateur lent</td><td>60 €</td></tr>
+<tr><td>Suppression virus</td><td>60 €</td></tr>
 <tr><td>Nettoyage complet</td><td>60 €</td></tr>
 <tr><td>Installation antivirus</td><td>30 €</td></tr>
 </table>
@@ -287,7 +269,7 @@ footer {
 </section>
 
 <section id="assistance">
-<h2>Assistance aux utilisateurs</h2>
+<h2>Assistance utilisateurs</h2>
 <table>
 <tr><td>Initiation informatique — 1h</td><td>40 €</td></tr>
 <tr><td>Aide aux seniors</td><td>35 à 40 €</td></tr>
@@ -303,58 +285,55 @@ footer {
 </section>
 
 <footer>
-© 2025 — Maintenance Informatique Futuriste
+© 2025 — Maintenance Informatique Cyberpunk
 </footer>
 
 <script>
 
 /* ------------------------------------------------
-   ONGLET / SECTION — COMPATIBLE BRAVE
+   ONGLET / SECTIONS — COMPATIBLE BRAVE
 -------------------------------------------------- */
-function openTab(id) {
-    document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
-    document.getElementById(id).classList.add('active');
+function openTab(id){
+    document.querySelectorAll("section").forEach(s => s.classList.remove("active"));
+    document.getElementById(id).classList.add("active");
 }
-openTab('tarifs');  // Affiche un onglet au chargement
+openTab("tarifs");
 
 /* ------------------------------------------------
-   PARTICULES ANIMÉES
+   PARTICULES CYBERPUNK
 -------------------------------------------------- */
-const canvas = document.getElementById('particles');
-const ctx = canvas.getContext('2d');
+const canvas=document.getElementById("particles");
+const ctx=canvas.getContext("2d");
+canvas.width=innerWidth;
+canvas.height=innerHeight;
 
-canvas.width = innerWidth;
-canvas.height = innerHeight;
-
-let particles = [];
-
-for(let i=0;i<170;i++){
-    particles.push({
-        x: Math.random()*canvas.width,
-        y: Math.random()*canvas.height,
-        size: Math.random()*2+1,
-        dx: (Math.random()-.5)*0.4,
-        dy: (Math.random()-.5)*0.4
+let parts=[];
+for(let i=0;i<250;i++){
+    parts.push({
+        x:Math.random()*canvas.width,
+        y:Math.random()*canvas.height,
+        s:Math.random()*2+1,
+        dx:(Math.random()-.5)*1.2,
+        dy:(Math.random()-.5)*1.2
     });
 }
 
-function animateParticles(){
+function anim(){
     ctx.clearRect(0,0,canvas.width,canvas.height);
-    
-    particles.forEach(p=>{
+    parts.forEach(p=>{
         p.x+=p.dx; p.y+=p.dy;
         if(p.x<0||p.x>canvas.width) p.dx*=-1;
         if(p.y<0||p.y>canvas.height) p.dy*=-1;
-
-        ctx.fillStyle="#d8a0ff";
+        ctx.fillStyle="#ff66ff";
+        ctx.shadowBlur=15;
+        ctx.shadowColor="#ff00ff";
         ctx.beginPath();
-        ctx.arc(p.x,p.y,p.size,0,Math.PI*2);
+        ctx.arc(p.x,p.y,p.s,0,Math.PI*2);
         ctx.fill();
     });
-
-    requestAnimationFrame(animateParticles);
+    requestAnimationFrame(anim);
 }
-animateParticles();
+anim();
 
 </script>
 
