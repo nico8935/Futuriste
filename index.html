@@ -1,87 +1,362 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Maintenance Informatique Futuriste – Version Corrigée</title>
+
+<title>Maintenance Informatique Futuriste – Version Ultra</title>
+
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+
 <style>
-body { margin:0; font-family:'Orbitron',sans-serif; background:#000; color:#d7d7ff; overflow-x:hidden; }
-.space-bg { position:fixed; top:0; left:0; width:100%; height:100%; z-index:-5;
-background:url('https://raw.githubusercontent.com/nico8935/Futuriste/refs/heads/main/ChatGPT%20Image%2031%20janv.%202026%2C%2010_57_26.png') center/cover no-repeat;
-animation:pulseVideo 10s ease-in-out infinite alternate; }
-@keyframes pulseVideo { from{filter:brightness(0.75)saturate(1.1);} to{filter:brightness(1.15)saturate(1.4);} }
-#particles { position:fixed; top:0; left:0; width:100%; height:100%; z-index:-3; pointer-events:none; }
-nav { position:fixed; top:10px; left:50%; transform:translateX(-50%); display:flex; gap:20px; z-index:9999; }
-.dropdown { position:relative; }
-.dropdown button { background:rgba(100,0,180,0.6); border:1px solid #b855ff; padding:12px 20px; border-radius:10px; color:#eee0ff; cursor:pointer; text-shadow:0 0 8px #c77bff; box-shadow:0 0 12px #c77bff88; transition:.3s; }
-.dropdown button:hover { transform:scale(1.08); box-shadow:0 0 20px #d38aff; }
-.dropdown-content { display:none; position:absolute; top:55px; left:0; background:rgba(20,0,40,0.8); border:1px solid #a966ff; border-radius:10px; min-width:220px; padding:10px; box-shadow:0 0 15px #a966ff88; }
-.dropdown-content p { margin:0; padding:8px; border-bottom:1px solid #8844dd55; cursor:pointer; }
-.dropdown-content p:hover { background:rgba(150,0,255,0.3); }
-.dropdown:hover .dropdown-content { display:block; }
-section { max-width:1100px; margin:140px auto 50px; background:rgba(10,0,25,0.6); padding:30px; border-radius:12px; box-shadow:0 0 25px #a966ffaa; display:none; }
-section.active { display:block; }
-h1 { text-align:center; margin-top:120px; font-size:3.2rem; text-shadow:0 0 20px #bb66ff,0 0 35px #00ccff; }
-h2 { border-left:4px solid #cc66ff; padding-left:10px; text-shadow:0 0 12px #d88fff; }
-table { width:100%; border-collapse:collapse; }
-td { padding:10px; border-bottom:1px solid #8844dd55; }
-footer { text-align:center; padding:40px; opacity:0.7; }
+
+/* ------------------------------
+   RESET + BASE
+-------------------------------- */
+body {
+    margin: 0;
+    font-family: 'Orbitron', sans-serif;
+    background: #000;
+    color: #e9d9ff;
+    overflow-x: hidden;
+    animation: fadeIn 1s ease-in-out;
+}
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* ------------------------------
+   BACKGROUND ANIMÉ + PULSATION
+-------------------------------- */
+.space-bg {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: -5;
+    background: url('https://raw.githubusercontent.com/nico8935/Futuriste/refs/heads/main/ChatGPT%20Image%2031%20janv.%202026%2C%2010_57_26.png') center/cover no-repeat;
+    filter: brightness(0.9);
+    animation: bgPulse 12s ease-in-out infinite alternate;
+}
+@keyframes bgPulse {
+    from { transform: scale(1); filter: brightness(0.7) saturate(1.1); }
+    to { transform: scale(1.05); filter: brightness(1.2) saturate(1.4); }
+}
+
+/* ------------------------------
+   PARTICULES
+-------------------------------- */
+#particles {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: -3;
+}
+
+/* ------------------------------
+   MENU DÉROULANT FUTURISTE
+-------------------------------- */
+nav {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 25px;
+    z-index: 9999;
+}
+
+.dropdown {
+    position: relative;
+}
+
+.dropdown button {
+    background: rgba(120, 0, 200, 0.55);
+    border: 1px solid #cb66ff;
+    padding: 12px 22px;
+    color: #f8eaff;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: .25s;
+    box-shadow: 0 0 18px #b566ffa8;
+    text-shadow: 0 0 10px #d88fff;
+}
+
+.dropdown button:hover {
+    background: rgba(160, 0, 255, 0.75);
+    transform: scale(1.12);
+    box-shadow: 0 0 25px #dd99ffaa;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 55px;
+    left: 0;
+    background: rgba(30,0,50,0.85);
+    border: 1px solid #bb66ff;
+    border-radius: 12px;
+    min-width: 230px;
+    padding: 10px;
+    box-shadow: 0 0 18px #a466ff88;
+    backdrop-filter: blur(6px);
+    animation: fadeIn .3s ease-out;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown-content p {
+    margin: 0;
+    padding: 8px 10px;
+    border-bottom: 1px solid #8844cc66;
+    cursor: pointer;
+    transition: .25s;
+}
+
+.dropdown-content p:hover {
+    background: rgba(150,0,255,0.3);
+    padding-left: 15px;
+    transform: scale(1.03);
+}
+
+/* ------------------------------
+   TITRE PRINCIPAL
+-------------------------------- */
+h1 {
+    text-align: center;
+    margin-top: 150px;
+    font-size: 3.5rem;
+    text-shadow: 0 0 25px #c66aff, 0 0 35px #00e0ff;
+    animation: glowPulse 3s infinite alternate;
+}
+@keyframes glowPulse {
+    from { opacity: 0.75; }
+    to { opacity: 1; }
+}
+
+/* ------------------------------
+   SECTIONS + TRANSITIONS
+-------------------------------- */
+section {
+    max-width: 1100px;
+    margin: 30px auto;
+    padding: 35px;
+    background: rgba(20,0,40,0.6);
+    border-radius: 15px;
+    box-shadow: 0 0 25px #a966ffaa;
+    display: none;
+    opacity: 0;
+    transition: opacity .6s ease-in-out;
+    backdrop-filter: blur(6px);
+}
+
+section.active {
+    display: block;
+    opacity: 1;
+}
+
+h2 {
+    border-left: 4px solid #d266ff;
+    padding-left: 12px;
+    margin-bottom: 20px;
+    text-shadow: 0 0 12px #e188ff;
+}
+
+table {
+    width: 100%; 
+    border-collapse: collapse;
+}
+
+td {
+    padding: 12px;
+    border-bottom: 1px solid #9955dd55;
+    font-size: 1.05rem;
+}
+
+/* ------------------------------
+   FOOTER
+-------------------------------- */
+footer {
+    text-align: center;
+    padding: 40px;
+    opacity: 0.8;
+    margin-top: 80px;
+}
+
 </style>
 </head>
 <body>
+
+<!-- FOND ANIMÉ -->
 <div class="space-bg"></div>
 <canvas id="particles"></canvas>
+
+<!-- MENU ULTRA MODERNE -->
 <nav>
-    <div class="dropdown"><button>Tarifs</button><div class="dropdown-content"><p onclick="openTab('tarifs')">Tarifs horaires</p></div></div>
-    <div class="dropdown"><button>Dépannage</button><div class="dropdown-content"><p onclick="openTab('depannage')">Dépannage & optimisation</p></div></div>
-    <div class="dropdown"><button>Système</button><div class="dropdown-content"><p onclick="openTab('systeme')">Système & logiciels</p></div></div>
-    <div class="dropdown"><button>Internet</button><div class="dropdown-content"><p onclick="openTab('internet')">Internet / TV / Wi‑Fi</p></div></div>
-    <div class="dropdown"><button>Assistance</button><div class="dropdown-content"><p onclick="openTab('assistance')">Assistance utilisateurs</p></div></div>
-    <div class="dropdown"><button>Contact</button><div class="dropdown-content"><p onclick="openTab('contact')">Me contacter</p></div></div>
+
+    <div class="dropdown">
+        <button>Tarifs</button>
+        <div class="dropdown-content">
+            <p onclick="openTab('tarifs')">Tarifs horaires</p>
+        </div>
+    </div>
+
+    <div class="dropdown">
+        <button>Dépannage</button>
+        <div class="dropdown-content">
+            <p onclick="openTab('depannage')">Dépannage & Optimisation</p>
+        </div>
+    </div>
+
+    <div class="dropdown">
+        <button>Système</button>
+        <div class="dropdown-content">
+            <p onclick="openTab('systeme')">Système & logiciels</p>
+        </div>
+    </div>
+
+    <div class="dropdown">
+        <button>Internet</button>
+        <div class="dropdown-content">
+            <p onclick="openTab('internet')">TV – Wi-Fi – Réseau</p>
+        </div>
+    </div>
+
+    <div class="dropdown">
+        <button>Assistance</button>
+        <div class="dropdown-content">
+            <p onclick="openTab('assistance')">Assistance aux utilisateurs</p>
+        </div>
+    </div>
+
+    <div class="dropdown">
+        <button>Contact</button>
+        <div class="dropdown-content">
+            <p onclick="openTab('contact')">Me contacter</p>
+        </div>
+    </div>
+
 </nav>
+
 <h1>Maintenance Informatique Futuriste</h1>
-<section id="tarifs"><h2>Tarifs horaires</h2><table>
+
+<!-- SECTIONS -->
+
+<section id="tarifs">
+<h2>Tarifs horaires</h2>
+<table>
 <tr><td>Dépannage informatique – 1ère heure</td><td>50 €</td></tr>
 <tr><td>Heure supplémentaire</td><td>40 €</td></tr>
 <tr><td>Déplacement Grasse</td><td>Gratuit</td></tr>
 <tr><td>Déplacement hors Grasse</td><td>5 à 10 €</td></tr>
-</table></section>
-<section id="depannage"><h2>Dépannage & optimisation</h2><table>
-<tr><td>Ordinateur lent</td><td>60 €</td></tr>
-<tr><td>Suppression virus</td><td>60 €</td></tr>
+</table>
+</section>
+
+<section id="depannage">
+<h2>Dépannage & Optimisation</h2>
+<table>
+<tr><td>Ordinateur lent (optimisation complète)</td><td>60 €</td></tr>
+<tr><td>Suppression virus / malware</td><td>60 €</td></tr>
 <tr><td>Nettoyage complet</td><td>60 €</td></tr>
 <tr><td>Installation antivirus</td><td>30 €</td></tr>
-</table></section>
-<section id="systeme"><h2>Système & logiciels</h2><table>
+</table>
+</section>
+
+<section id="systeme">
+<h2>Système & logiciels</h2>
+<table>
 <tr><td>Réinstallation Windows</td><td>80 €</td></tr>
 <tr><td>Windows + sauvegarde</td><td>100 €</td></tr>
 <tr><td>Installation logiciels</td><td>30 à 40 €</td></tr>
 <tr><td>Récupération simple</td><td>40 €</td></tr>
-</table></section>
-<section id="internet"><h2>Internet / Wi‑Fi / TV</h2><table>
+</table>
+</section>
+
+<section id="internet">
+<h2>Internet / Wi-Fi / TV</h2>
+<table>
 <tr><td>Installation TV / box</td><td>50 €</td></tr>
-<tr><td>Configuration Wi‑Fi</td><td>50 €</td></tr>
+<tr><td>Configuration Wi-Fi</td><td>50 €</td></tr>
 <tr><td>Optimisation réseau</td><td>50 à 70 €</td></tr>
 <tr><td>Installation imprimante</td><td>40 €</td></tr>
-</table></section>
-<section id="assistance"><h2>Assistance utilisateurs</h2><table>
-<tr><td>Initiation informatique</td><td>40 €</td></tr>
+</table>
+</section>
+
+<section id="assistance">
+<h2>Assistance aux utilisateurs</h2>
+<table>
+<tr><td>Initiation informatique — 1h</td><td>40 €</td></tr>
 <tr><td>Aide aux seniors</td><td>35 à 40 €</td></tr>
 <tr><td>Conseils + sécurisation</td><td>40 €</td></tr>
-</table></section>
-<section id="contact"><h2>Contact</h2>
+</table>
+</section>
+
+<section id="contact">
+<h2>Contact</h2>
 <p><strong>Email :</strong> nicolasepeirier@gmail.com</p>
 <p><strong>Téléphone :</strong> 07 62 90 35 01</p>
 <p><strong>Adresse :</strong> 133 Avenue Auguste Renoir, Grasse</p>
 </section>
-<footer>© 2025 — Maintenance Informatique Futuriste</footer>
+
+<footer>
+© 2025 — Maintenance Informatique Futuriste
+</footer>
+
 <script>
-function openTab(id){ document.querySelectorAll('section').forEach(s=>s.classList.remove('active')); document.getElementById(id).classList.add('active'); }
-openTab('tarifs');
-const c=document.getElementById('particles'); const x=c.getContext('2d'); c.width=innerWidth; c.height=innerHeight;
-let p=[]; for(let i=0;i<150;i++){ p.push({x:Math.random()*c.width,y:Math.random()*c.height,s:Math.random()*2+1,dx:(Math.random()-.5)*.3,dy:(Math.random()-.5)*.3}); }
-function a(){ x.clearRect(0,0,c.width,c.height); p.forEach(o=>{o.x+=o.dx;o.y+=o.dy;if(o.x<0||o.x>c.width)o.dx*=-1;if(o.y<0||o.y>c.height)o.dy*=-1;x.fillStyle="#c28aff";x.beginPath();x.arc(o.x,o.y,o.s,0,Math.PI*2);x.fill();}); requestAnimationFrame(a);} a();
+
+/* ------------------------------------------------
+   ONGLET / SECTION — COMPATIBLE BRAVE
+-------------------------------------------------- */
+function openTab(id) {
+    document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+}
+openTab('tarifs');  // Affiche un onglet au chargement
+
+/* ------------------------------------------------
+   PARTICULES ANIMÉES
+-------------------------------------------------- */
+const canvas = document.getElementById('particles');
+const ctx = canvas.getContext('2d');
+
+canvas.width = innerWidth;
+canvas.height = innerHeight;
+
+let particles = [];
+
+for(let i=0;i<170;i++){
+    particles.push({
+        x: Math.random()*canvas.width,
+        y: Math.random()*canvas.height,
+        size: Math.random()*2+1,
+        dx: (Math.random()-.5)*0.4,
+        dy: (Math.random()-.5)*0.4
+    });
+}
+
+function animateParticles(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    
+    particles.forEach(p=>{
+        p.x+=p.dx; p.y+=p.dy;
+        if(p.x<0||p.x>canvas.width) p.dx*=-1;
+        if(p.y<0||p.y>canvas.height) p.dy*=-1;
+
+        ctx.fillStyle="#d8a0ff";
+        ctx.beginPath();
+        ctx.arc(p.x,p.y,p.size,0,Math.PI*2);
+        ctx.fill();
+    });
+
+    requestAnimationFrame(animateParticles);
+}
+animateParticles();
+
 </script>
+
 </body>
 </html>
