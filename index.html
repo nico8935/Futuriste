@@ -222,6 +222,14 @@ footer {
     <div class="dropdown"><button>Assistance</button><div class="dropdown-content"><p onclick="openTab('assistance')">Assistance utilisateurs</p></div></div>
     <div class="dropdown"><button>Contact</button><div class="dropdown-content"><p onclick="openTab('contact')">Me contacter</p></div></div>
 </nav>
+   <div id="tarifs" class="tabcontent"> ... </div>
+<div id="depannage" class="tabcontent"> ... </div>
+<div id="systeme" class="tabcontent"> ... </div>
+<div id="internet" class="tabcontent"> ... </div>
+<div id="assistance" class="tabcontent"> ... </div>
+<div id="contact" class="tabcontent"> ... </div>
+
+
 
 <!-- TITRE -->
 <h1>Technicien en maintenance Informatique </h1>
@@ -335,7 +343,32 @@ function anim(){
 }
 anim();
 
+<script>
+// Fonction pour afficher une section + activer l’onglet
+function openTab(tabName) {
+    // Masquer toutes les sections
+    document.querySelectorAll(".tabcontent").forEach(sec => {
+        sec.style.display = "none";
+    });
+
+    // Afficher la section demandée
+    const activeSection = document.getElementById(tabName);
+    if (activeSection) activeSection.style.display = "block";
+
+    // Retirer l'état "active" de tous les boutons
+    document.querySelectorAll("nav .dropdown button").forEach(btn => {
+        btn.classList.remove("active");
+    });
+
+    // Activer le bouton correspondant à l'onglet cliqué
+    const btn = document.querySelector(
+        `nav .dropdown p[onclick="openTab('${tabName}')"]`
+    )?.closest(".dropdown")?.querySelector("button");
+
+    if (btn) btn.classList.add("active");
+}
 </script>
 
 </body>
 </html>
+
