@@ -1,89 +1,29 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Technicien en maintenance informatique</title>
 
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-<title>technicien en maintenance Informatique</title>
-
+<!-- Police moderne -->
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
 
 <style>
-
-/* ------------------------------
-   BASE
--------------------------------- */
+/* BASE */
 body {
     margin: 0;
     font-family: 'Orbitron', sans-serif;
-    background: #020007;
-    color: #e9d9ff;
+    background: url("assets/bg.png") center/cover no-repeat fixed;
+    color: #e7e7f7;
     overflow-x: hidden;
-    animation: fadeIntro 1.2s ease-in-out;
-}
-@keyframes fadeIntro {
-    from { opacity: 0; transform: scale(1.05); }
-    to { opacity: 1; transform: scale(1); }
 }
 
-/* ------------------------------
-   SCANLINES + GLITCH
--------------------------------- */
-.scanlines {
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    background: repeating-linear-gradient(
-        to bottom,
-        rgba(255, 255, 255, 0.03) 0px,
-        rgba(255, 255, 255, 0.03) 2px,
-        transparent 4px
-    );
-    z-index: 10000;
-    opacity: .4;
-    animation: scanMove 6s linear infinite;
-}
-@keyframes scanMove {
-    from { transform: translateY(-100%); }
-    to { transform: translateY(100%); }
+/* MUSIQUE INVISIBLE */
+audio {
+    display: none;
 }
 
-/* ------------------------------
-   FOND ANIMÉ CYBERPUNK
--------------------------------- */
-.space-bg {
-    position: fixed;
-    inset: 0;
-    z-index: -5;
-    background: url('https://raw.githubusercontent.com/nico8935/Futuriste/refs/heads/main/ChatGPT%20Image%2031%20janv.%202026%2C%2010_57_26.png')
-    center/cover no-repeat;
-    animation: bgPulse 8s infinite alternate ease-in-out,
-               bgMove 40s infinite linear;
-    filter: saturate(1.3) brightness(0.9);
-}
-@keyframes bgPulse {
-    from { transform: scale(1); filter: brightness(0.8) saturate(1.2); }
-    to { transform: scale(1.15); filter: brightness(1.25) saturate(1.7); }
-}
-@keyframes bgMove {
-    from { background-position: center center; }
-    to { background-position: 70% 40%; }
-}
-
-/* ------------------------------
-   PARTICULES CYBERPUNK
--------------------------------- */
-#particles {
-    position: fixed;
-    inset: 0;
-    z-index: -3;
-    pointer-events:none;
-}
-
-/* ------------------------------
-   MENU NÉON CYBERPUNK
--------------------------------- */
+/* MENU */
 nav {
     position: fixed;
     top: 20px;
@@ -91,90 +31,59 @@ nav {
     transform: translateX(-50%);
     display: flex;
     gap: 25px;
-    z-index: 9999;
+    z-index: 1000;
 }
 
-.dropdown {
-    position: relative;
-}
-
-.dropdown button {
-    background: rgba(180,0,255,0.4);
-    border: 1px solid #ff44ff;
+nav button {
     padding: 12px 22px;
     border-radius: 10px;
+    border: 1px solid #b85cff;
+    background: rgba(90, 0, 160, 0.5);
     cursor: pointer;
     color: #ffe8ff;
-    transition: .2s;
-    box-shadow: 0 0 15px #ff44ff99;
-    text-shadow: 0 0 10px #ff55ff;
-}
-.dropdown button:hover {
-    background: rgba(255,0,255,0.8);
-    box-shadow: 0 0 30px #ff00ffdd;
-    transform: scale(1.18);
+    text-shadow: 0 0 10px #ff77ff;
+    box-shadow: 0 0 15px #b85cff;
+    transition: .25s;
 }
 
-.dropdown-content {
-    position: absolute;
-    display: none;
-    min-width: 230px;
-    top: 55px;
-    background: rgba(25,0,40,0.9);
-    backdrop-filter: blur(7px);
-    border-radius: 12px;
-    border: 1px solid #cc33ff;
-    box-shadow: 0 0 22px #cc33ff88;
-    animation: fadeIn .3s ease-out;
-}
-.dropdown:hover .dropdown-content {
-    display: block;
+nav button:hover,
+nav button.active {
+    background: rgba(200, 0, 255, 0.9);
+    box-shadow: 0 0 25px #ff00ff;
+    transform: scale(1.12);
 }
 
-.dropdown-content p {
-    padding: 10px;
-    margin: 0;
-    cursor: pointer;
-    border-bottom: 1px solid #aa22dd66;
-    transition: .2s;
-}
-.dropdown-content p:hover {
-    background: rgba(255,0,255,0.3);
-    padding-left: 18px;
-}
-
-/* ------------------------------
-   TITRE CYBERPUNK
--------------------------------- */
+/* TITRE */
 h1 {
-    margin-top: 170px;
+    margin-top: 160px;
     text-align: center;
     font-size: 3.8rem;
-    text-shadow: 0 0 40px #ff00ff, 0 0 60px #00e6ff;
+    text-shadow: 0 0 30px #ff00ff, 0 0 40px #00e6ff;
     animation: glitch 2s infinite;
 }
+
 @keyframes glitch {
-    0%, 100% { transform: translate(0,0); }
+    0% { transform: translate(0,0); }
     20% { transform: translate(-3px,2px); }
     40% { transform: translate(3px,-2px); }
-    60% { transform: translate(-2px,3px); }
+    60% { transform: translate(-3px,3px); }
     80% { transform: translate(2px,-3px); }
+    100% { transform: translate(0,0); }
 }
 
-/* ------------------------------
-   SECTIONS ANIMATION + STYLE
--------------------------------- */
+/* SECTIONS PRO */
 section {
-    max-width: 1100px;
+    display: none;
+    max-width: 950px;
     margin: 40px auto;
     padding: 35px;
-    background: rgba(25,0,50,0.7);
+    background: rgba(20, 0, 40, 0.75);
     border-radius: 15px;
-    display: none;
-    opacity: 0;
-    transition: opacity .5s ease-in-out, transform .4s;
+    backdrop-filter: blur(6px);
     box-shadow: 0 0 30px #ff00ff55;
-    backdrop-filter: blur(7px);
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity .5s ease, transform .5s ease;
 }
 
 section.active {
@@ -186,71 +95,64 @@ section.active {
 h2 {
     border-left: 4px solid #ff00ff;
     padding-left: 12px;
-    margin-bottom: 20px;
 }
 
-table { width: 100%; border-collapse: collapse; }
+/* TABLEAUX */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
 td {
     padding: 12px;
     border-bottom: 1px solid #ff00ff55;
-    font-size: 1.1rem;
+    font-size: 1.15rem;
 }
 
-/* ------------------------------
-   FOOTER
--------------------------------- */
+/* FOOTER */
 footer {
     text-align: center;
     padding: 40px;
-    opacity: 0.8;
+    margin-top: 40px;
+    opacity: 0.7;
 }
-
 </style>
 </head>
 <body>
 
-<div class="space-bg"></div>
-<div class="scanlines"></div>
-<canvas id="particles"></canvas>
+<!-- MUSIQUE AUTO-PLAY -->
+<audio autoplay loop>
+    <source src="assets/music.mp3" type="audio/mpeg">
+</audio>
 
-<!-- MENU -->
+<!-- MENU PRO -->
 <nav>
-    <div class="dropdown"><button>Tarifs</button><div class="dropdown-content"><p onclick="openTab('tarifs')">Tarifs horaires</p></div></div>
-    <div class="dropdown"><button>Dépannage</button><div class="dropdown-content"><p onclick="openTab('depannage')">Dépannage & optimisation</p></div></div>
-    <div class="dropdown"><button>Système</button><div class="dropdown-content"><p onclick="openTab('systeme')">Système & logiciels</p></div></div>
-    <div class="dropdown"><button>Internet</button><div class="dropdown-content"><p onclick="openTab('internet')">Internet / TV / Wi-Fi</p></div></div>
-    <div class="dropdown"><button>Assistance</button><div class="dropdown-content"><p onclick="openTab('assistance')">Assistance utilisateurs</p></div></div>
-    <div class="dropdown"><button>Contact</button><div class="dropdown-content"><p onclick="openTab('contact')">Me contacter</p></div></div>
+    <button onclick="openTab('tarifs')">Tarifs</button>
+    <button onclick="openTab('depannage')">Dépannage</button>
+    <button onclick="openTab('systeme')">Système</button>
+    <button onclick="openTab('internet')">Internet</button>
+    <button onclick="openTab('assistance')">Assistance</button>
+    <button onclick="openTab('contact')">Contact</button>
 </nav>
-<div id="tarifs" class="tabcontent"> Dépannage informatique — 1ère heure → 50 € Heure supplémentaire → 40 € Déplacement (Grasse centre) → Gratuit Déplacement hors Grasse (5 à 10 km) → 5 à 10 € </div>
-<div id="depannage" class="tabcontent"> Ordinateur lent (optimisation complète) → 60 € Suppression virus / malware → 60 € Nettoyage complet (logiciels, erreurs, mises à jour) → 60 € Installation / mise à jour antivirus → 30 € </div>
-<div id="systeme & Logiciels" class="tabcontent"> Réinstallation Windows + pilotes → 80 € Windows + sauvegarde + restauration des données → 100 € Installation logiciels / suite bureautique → 30 à 40 € Récupération de données simple → 40 € </div>
-<div id="internet Wifi & Multimedia" class="tabcontent"> Installation TV, box, câbles → 50 € Installation & configuration Wi-Fi → 50 € Optimisation réseau (répéteurs, CPL…) → 50 à 70 € Installation imprimante (Wi-Fi ou USB) → 40 € </div>
-<div id="assistance aux utilisateurs" class="tabcontent"> Initiation informatique — 1h → 40 € Aide aux seniors (prise en main Internet) → 35 à 40 € Sécurisation + conseils d’usage → 40 € </div>
-<div id="contact" class="tabcontent"> nicolasepeirier@gmail.com  </div>
-
-
 
 <!-- TITRE -->
-<h1>Technicien en maintenance Informatique </h1>
+<h1>Technicien en maintenance informatique</h1>
 
 <!-- SECTIONS -->
-
 <section id="tarifs">
 <h2>Tarifs horaires</h2>
 <table>
-<tr><td>Dépannage informatique – 1ère heure</td><td>50 €</td></tr>
+<tr><td>Dépannage informatique (1ère heure)</td><td>50 €</td></tr>
 <tr><td>Heure supplémentaire</td><td>40 €</td></tr>
 <tr><td>Déplacement Grasse</td><td>Gratuit</td></tr>
-<tr><td>Déplacement hors Grasse</td><td>5 à 10 €</td></tr>
+<tr><td>Déplacement hors Grasse</td><td>5–10 €</td></tr>
 </table>
 </section>
 
 <section id="depannage">
-<h2>Dépannage & Optimisation</h2>
+<h2>Dépannage & optimisation</h2>
 <table>
-<tr><td>Ordinateur lent</td><td>60 €</td></tr>
-<tr><td>Suppression virus</td><td>60 €</td></tr>
+<tr><td>Ordinateur lent (optimisation)</td><td>60 €</td></tr>
+<tr><td>Suppression virus / malware</td><td>60 €</td></tr>
 <tr><td>Nettoyage complet</td><td>60 €</td></tr>
 <tr><td>Installation antivirus</td><td>30 €</td></tr>
 </table>
@@ -261,8 +163,8 @@ footer {
 <table>
 <tr><td>Réinstallation Windows</td><td>80 €</td></tr>
 <tr><td>Windows + sauvegarde</td><td>100 €</td></tr>
-<tr><td>Installation logiciels</td><td>30 à 40 €</td></tr>
-<tr><td>Récupération simple</td><td>40 €</td></tr>
+<tr><td>Installation logiciels</td><td>30–40 €</td></tr>
+<tr><td>Récupération de données (simple)</td><td>40 €</td></tr>
 </table>
 </section>
 
@@ -271,7 +173,7 @@ footer {
 <table>
 <tr><td>Installation TV / box</td><td>50 €</td></tr>
 <tr><td>Configuration Wi-Fi</td><td>50 €</td></tr>
-<tr><td>Optimisation réseau</td><td>50 à 70 €</td></tr>
+<tr><td>Optimisation réseau</td><td>50–70 €</td></tr>
 <tr><td>Installation imprimante</td><td>40 €</td></tr>
 </table>
 </section>
@@ -279,9 +181,9 @@ footer {
 <section id="assistance">
 <h2>Assistance utilisateurs</h2>
 <table>
-<tr><td>Initiation informatique — 1h</td><td>40 €</td></tr>
-<tr><td>Aide aux seniors</td><td>35 à 40 €</td></tr>
-<tr><td>Conseils + sécurisation</td><td>40 €</td></tr>
+<tr><td>Initiation informatique (1h)</td><td>40 €</td></tr>
+<tr><td>Aide aux seniors</td><td>35–40 €</td></tr>
+<tr><td>Sécurisation + conseils</td><td>40 €</td></tr>
 </table>
 </section>
 
@@ -292,83 +194,25 @@ footer {
 <p><strong>Adresse :</strong> 133 Avenue Auguste Renoir, Grasse</p>
 </section>
 
-<footer>
-© 2025 — Maintenance Informatique Cyberpunk
-</footer>
+<footer>© 2025 — Maintenance Informatique Cyberpunk</footer>
 
 <script>
-
-/* ------------------------------------------------
-   ONGLET / SECTIONS — COMPATIBLE BRAVE
--------------------------------------------------- */
-function openTab(id){
-    document.querySelectorAll("section").forEach(s => s.classList.remove("active"));
-    document.getElementById(id).classList.add("active");
-}
-openTab("tarifs");
-
-/* ------------------------------------------------
-   PARTICULES CYBERPUNK
--------------------------------------------------- */
-const canvas=document.getElementById("particles");
-const ctx=canvas.getContext("2d");
-canvas.width=innerWidth;
-canvas.height=innerHeight;
-
-let parts=[];
-for(let i=0;i<250;i++){
-    parts.push({
-        x:Math.random()*canvas.width,
-        y:Math.random()*canvas.height,
-        s:Math.random()*2+1,
-        dx:(Math.random()-.5)*1.2,
-        dy:(Math.random()-.5)*1.2
+// SYSTÈME D’ONGLETS PRO
+function openTab(name) {
+    document.querySelectorAll("section").forEach(sec => {
+        sec.classList.remove("active");
     });
-}
+    document.getElementById(name).classList.add("active");
 
-function anim(){
-    ctx.clearRect(0,0,canvas.width,canvas.height);
-    parts.forEach(p=>{
-        p.x+=p.dx; p.y+=p.dy;
-        if(p.x<0||p.x>canvas.width) p.dx*=-1;
-        if(p.y<0||p.y>canvas.height) p.dy*=-1;
-        ctx.fillStyle="#ff66ff";
-        ctx.shadowBlur=15;
-        ctx.shadowColor="#ff00ff";
-        ctx.beginPath();
-        ctx.arc(p.x,p.y,p.s,0,Math.PI*2);
-        ctx.fill();
-    });
-    requestAnimationFrame(anim);
-}
-anim();
-
-<script>
-// Fonction pour afficher une section + activer l’onglet
-function openTab(tabName) {
-    // Masquer toutes les sections
-    document.querySelectorAll(".tabcontent").forEach(sec => {
-        sec.style.display = "none";
-    });
-
-    // Afficher la section demandée
-    const activeSection = document.getElementById(tabName);
-    if (activeSection) activeSection.style.display = "block";
-
-    // Retirer l'état "active" de tous les boutons
-    document.querySelectorAll("nav .dropdown button").forEach(btn => {
+    document.querySelectorAll("nav button").forEach(btn => {
         btn.classList.remove("active");
     });
-
-    // Activer le bouton correspondant à l'onglet cliqué
-    const btn = document.querySelector(
-        `nav .dropdown p[onclick="openTab('${tabName}')"]`
-    )?.closest(".dropdown")?.querySelector("button");
-
-    if (btn) btn.classList.add("active");
+    event.target.classList.add("active");
 }
+
+// Onglet par défaut au chargement
+openTab('tarifs');
 </script>
 
 </body>
 </html>
-
